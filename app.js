@@ -1,18 +1,21 @@
+const express = require("express");
 const cors = require("cors");
 const contactRouter = require("./app/routes/contact.route");
 const ApiError = require("./app/api-error");
 
-var express = require("express");
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+
 // var bodyParser = require("body-parser");
-var app = express();
 
 // app.use(bodyParser.urlencoded({
 //   extended: true
 // }));
 // app.use(bodyParser.json());
 
-app.use(cors());
-app.use(express.json());
 app.use("/api/contacts", contactRouter);
 // handle 404 response
 app.use((req, res, next) => {
